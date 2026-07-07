@@ -1,0 +1,60 @@
+{
+  "request_id": "be2bc02e",
+  "trace_id": "trace_fdcb941a234b41d794a37a8ae596a0a7",
+  "model": "gpt-4o-mini",
+  "agent": "McGill Course Advisor",
+  "student_id": "bob",
+  "input": {
+    "term": "Summer",
+    "goal": "I want to take MGSC 662 (Decision Analytics) this term."
+  },
+  "tool_calls": [
+    {
+      "tool": "search_courses",
+      "query": "MGSC 662",
+      "term": "Summer",
+      "n_results": 1
+    },
+    {
+      "tool": "check_prerequisites",
+      "course_code": "MGSC 662",
+      "met": false,
+      "missing": [
+        "MGSC 661"
+      ]
+    },
+    {
+      "tool": "search_courses",
+      "query": "MGSC 661",
+      "term": "Summer",
+      "n_results": 0
+    },
+    {
+      "tool": "flag_policy_risk",
+      "course_codes": [
+        "MGSC 662"
+      ],
+      "term": "Summer",
+      "rules": []
+    }
+  ],
+  "guardrail_tripped": false,
+  "block_reason": null,
+  "error": null,
+  "requires_advisor_approval": false,
+  "final_output": {
+    "student_id": "bob",
+    "term": "Summer",
+    "suggested_courses": [],
+    "total_credits": 0.0,
+    "flagged_risks": [],
+    "requires_advisor_approval": false,
+    "approval_reason": null,
+    "missing_info": [
+      "prerequisite course MGSC 661 is not offered in Summer"
+    ],
+    "summary": "You cannot take MGSC 662 (Decision Analytics) this term because you haven't completed the prerequisite course MGSC 661, which is not offered in Summer."
+  },
+  "eval_status": "guardrail_trip",
+  "logged_at": "2026-06-03T04:18:16.132104+00:00"
+}

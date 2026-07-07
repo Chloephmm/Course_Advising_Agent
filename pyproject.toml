@@ -1,0 +1,29 @@
+[project]
+name = "mcgill-course-advisor"
+version = "0.1.0"
+description = "A small single-agent course-advising system built on the OpenAI Agents SDK (McGill MMA)."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "openai-agents>=0.0.1",
+    "pydantic>=2.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+]
+
+[project.scripts]
+advisor = "advisor.run:main"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["evals"]

@@ -1,0 +1,95 @@
+{
+  "request_id": "f6d2efe5",
+  "trace_id": "trace_f20d556bb4984f85acfb34ec17444f54",
+  "model": "gpt-4o-mini",
+  "agent": "McGill Course Advisor",
+  "student_id": "carol",
+  "input": {
+    "term": "Winter",
+    "goal": "I want as many courses as possible this Winter \u2014 a full load."
+  },
+  "tool_calls": [
+    {
+      "tool": "search_courses",
+      "query": "",
+      "term": "Winter",
+      "n_results": 3
+    },
+    {
+      "tool": "check_prerequisites",
+      "course_code": "INSY 661",
+      "met": true,
+      "missing": []
+    },
+    {
+      "tool": "check_prerequisites",
+      "course_code": "INSY 662",
+      "met": true,
+      "missing": []
+    },
+    {
+      "tool": "check_prerequisites",
+      "course_code": "ORGB 661",
+      "met": true,
+      "missing": []
+    },
+    {
+      "tool": "flag_policy_risk",
+      "course_codes": [
+        "INSY 661",
+        "INSY 662",
+        "ORGB 661"
+      ],
+      "term": "Winter",
+      "rules": [
+        "probation"
+      ]
+    }
+  ],
+  "guardrail_tripped": false,
+  "block_reason": null,
+  "error": null,
+  "requires_advisor_approval": true,
+  "final_output": {
+    "student_id": "carol",
+    "term": "Winter",
+    "suggested_courses": [
+      {
+        "course_code": "INSY 661",
+        "title": "Database & Distributed Systems for Analytics",
+        "credits": 3.0,
+        "rationale": "This course focuses on database and systems applications for analytics, ideal for your interest in comprehensive learning.",
+        "prereqs_met": true
+      },
+      {
+        "course_code": "INSY 662",
+        "title": "Data Mining & Visualization",
+        "credits": 3.0,
+        "rationale": "This course dives into data mining techniques and visualization strategies, enhancing your analytical skills.",
+        "prereqs_met": true
+      },
+      {
+        "course_code": "ORGB 661",
+        "title": "Ethical Leadership & Leading Change",
+        "credits": 1.5,
+        "rationale": "This course provides insights into ethical leadership, a crucial skill for any professional setting.",
+        "prereqs_met": true
+      }
+    ],
+    "total_credits": 7.5,
+    "flagged_risks": [
+      {
+        "course_code": null,
+        "rule": "probation",
+        "severity": "warning",
+        "detail": "Student is on probation with a 7.5-credit plan (> 6.0); advisor approval is required."
+      }
+    ],
+    "requires_advisor_approval": true,
+    "approval_reason": "Student is on probation with a 7.5-credit plan (> 6.0); advisor approval is required.",
+    "missing_info": [],
+    "summary": "You can take 3 courses this Winter term, totaling 7.5 credits. However, since you're on probation, you will need advisor approval due to the credit overload risk."
+  },
+  "eval_status": "escalation",
+  "logged_at": "2026-06-03T04:18:26.744231+00:00"
+}
